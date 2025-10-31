@@ -145,7 +145,9 @@ static void __init imx6q_csi_mux_init(void)
 		if (of_machine_is_compatible("fsl,imx6q-sabresd") ||
 			of_machine_is_compatible("fsl,imx6q-sabreauto") ||
 			of_machine_is_compatible("fsl,imx6qp-sabresd") ||
-			of_machine_is_compatible("fsl,imx6qp-sabreauto"))
+			of_machine_is_compatible("fsl,imx6qp-sabreauto") ||
+			of_machine_is_compatible("via,imx6q-vab820") ||
+			of_machine_is_compatible("via,imx6q-qsm8q60"))
 			regmap_update_bits(gpr, IOMUXC_GPR1, 1 << 19, 1 << 19);
 		else if (of_machine_is_compatible("fsl,imx6dl-sabresd") ||
 			 of_machine_is_compatible("fsl,imx6dl-sabreauto"))
@@ -199,7 +201,7 @@ static void __init imx6q_init_machine(void)
 		 */
 		imx_print_silicon_rev("i.MX6QP", imx_get_soc_revision() - 0x10);
 	else
-		imx_print_silicon_rev(cpu_is_imx6dl() ? "i.MX6DL" : "i.MX6Q",
+		imx_print_silicon_rev(cpu_is_imx6dl() ? "i.MX6DL" : "i.MX6DQ",
 				imx_get_soc_revision());
 
 	imx6q_enet_phy_init();
